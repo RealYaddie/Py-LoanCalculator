@@ -1,0 +1,29 @@
+Loan Calculator
+Your assignment: Create a simple loan calculator system. You are free to use any IDE you like.
+Here are the requirements:
+
+The user should be prompted to enter the following fields:
+	• Loan amount
+	• Interest rate
+	• Number of years
+The program should output:
+	• The monthly payment amount
+	• The total amount paid back
+	• The compound interest
+The user should have the option to display a table of all payments with the following headers:
+	• Payment no.
+	• Amount
+	• Interest
+	• Principal
+	• Remaining Balance
+
+First thing: Here I think we're worrying about capturing the information and finding the best method to store it.
+- Take the relevant information from the user and store it in the code
+	Input: Loan amount, Interest rate and the Number of Years
+	Program: stores this stuff in relevant data types. I think we could store the loan amount, the interest rate and the number of years all in their own respective list and then we could use the zip command to zip these values together since they'll all be entered in at the same time
+Second thing: Here we're working with the information now
+- To find the montly payment amount depending on the method we use to calculate this we could use one of the built in functions in combination with a lambda expression for this 
+- Shouldn't be too hard we'll use some a method to find the total amount paid back over the specific number of years and send it as an output
+- Not too sure how to calculate compound interest again but I think it might be something like it being a specifc percentage of the total amount to be paid back
+Third thing: Prolly testing phase right here
+Fourth thing: Here is where I think we'd go about getting the table with the correct headers and then we'd need to figure out how to get information based on what the user entered to be outputted into the table(this is prolly gonna be the hardest part now that I'm thinking about it)

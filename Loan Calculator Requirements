@@ -1,0 +1,18 @@
+Loan Calculator
+Your assignment: Create a simple loan calculator system. You are free to use any IDE you like.
+Here are the requirements:
+
+The user should be prompted to enter the following fields:
+	• Loan amount
+	• Interest rate
+	• Number of years
+The program should output:
+	• The monthly payment amount
+	• The total amount paid back
+	• The compound interest
+The user should have the option to display a table of all payments with the following headers:
+	• Payment no.
+	• Amount
+	• Interest
+	• Principal
+	• Remaining Balance

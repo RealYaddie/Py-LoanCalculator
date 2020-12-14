@@ -1,0 +1,29 @@
+#Declare and initialize the variables
+monthly_payment = 0
+loan = 0
+interestRate = 0
+numberOfPayments = 0
+LoanDurationInYears = 0
+
+#Ask the user for the values needed to calculate the monthly payment, the total amount repaid and the compound interest
+strLoan = input("How much money will you be borrowing?")
+strInterestRate = input("What is the interest rate on the loan?")
+strLoanDurationInYears = input("How many years will it take you to pay off the loan")
+
+#Convert the strings into floating point numbers so that we can use them in our formulas
+LoanDurationInYears = float(strLoanDurationInYears)
+Loan = float(strLoan)
+InterestRate = float(strInterestRate)
+
+#since payments are done montly, number of payments is the number of years for the loan times 12 (loan*12)
+numberOfPayments = loanDurationInYears * 12
+
+#Calculate the monthly payment based on the formula
+monthlyPayment = loan*InterestRate*(1 + InterestRate)*numberOfPayments/((1 + InterestRate*numberOfPayments)*numberOfPayments-1)
+
+#Present the result to the user
+print("Your monthly payment will be $"+ str(monthlyPayments))
+
+#Extra Credit (I think this just means we're being a bit fancy with things
+print("Your monthly payment will be $%.2f" %monthlyPayments)
+

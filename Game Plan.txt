@@ -26,4 +26,3 @@ print("Your monthly payment will be $"+ str(monthlyPayments))
 
 #Extra Credit (I think this just means we're being a bit fancy with things
 print("Your monthly payment will be $%.2f" %monthlyPayments)
-

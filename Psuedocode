@@ -1,6 +1,10 @@
 **To-do:
 	- Maybe change the input message so the user can choose to enter loan duration in years or months
 	- Convert interestRate into the interestRate per month to use it in the formula
+	- Ask the user how their loan is compounded
+		i. If its annually then (n - how frequently the amount is compounded) will be 1
+		ii. If its monthly then(n - how frequently the amount is compounded) will be 12
+	- Need to do a check also for if the loan_duration in months or years
 	- Still need to figure out how to do the tables
 #Declaring and initializing variables
 monthly_payment = 0.0	#Output from the program
@@ -12,6 +16,7 @@ loanAmtRepaid = 0.0 		#Output from the program
 cmp_interest = 0.0		#Output from the program
 
 #Get loan  information from the user
+how_compound = int(input('How is the loan compounded is it anually or monthly? 1 for anually and 2 for monthly'))
 loan_amount = float(input('Enter the amount being loaned'))
 interestRate = float(input('Enter the interest rate amount'))
 loan_duration = int(input('Enter the number of years to repay the loan'))
@@ -19,4 +24,8 @@ loan_duration = int(input('Enter the number of years to repay the loan'))
 #Calculation sections
 monthly_payment = (loan_amount * interestRate(1 + interestRate)**loan_duration)/((1 + interestRate)**loan_duration - 1)	# Monthly Payment formula
 loanAmtRepaid = monthly_payment * loan_duration	#Total amount paid back
+if how_compound == 1 then:	#Depending on how the loan's interest is compounded we change the formula accordingly
+	cmp_interest = loan_amount(1 + (interestRate / 1))**(1 * loan_duration)
+else:
+	cmp_interest = loan_amount(1 + (interestRate / 12))**(12 * loan_duration)
 

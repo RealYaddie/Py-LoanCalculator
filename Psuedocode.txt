@@ -1,4 +1,5 @@
 **To-do:
+	- Not sure if we're gonna actually need to check for how the interest is compounded I think we can just assume its annually.
 	- Maybe change the input message so the user can choose to enter loan duration in years or months
 	- Convert interestRate into the interestRate per month to use it in the formula
 	- Ask the user how their loan is compounded
@@ -24,7 +25,7 @@ loan_duration = int(input('Enter the number of years to repay the loan'))
 #Calculation sections
 monthly_payment = (loan_amount * interestRate(1 + interestRate)**loan_duration)/((1 + interestRate)**loan_duration - 1)	# Monthly Payment formula
 loanAmtRepaid = monthly_payment * loan_duration	#Total amount paid back
-if how_compound == 1 then:	#Depending on how the loan's interest is compounded we change the formula accordingly
+if how_compound == 1 then:	#Depending on how the loan's interest is compounded we change the formula
 	cmp_interest = loan_amount(1 + (interestRate / 1))**(1 * loan_duration)
 else:
 	cmp_interest = loan_amount(1 + (interestRate / 12))**(12 * loan_duration)

@@ -1,0 +1,5 @@
+- Need to figure out what is the best way to store the input and have it be linked to the user
+	-> My thought so far is this:
+		i. Store all the information in a list so thats the loan amount, the interest rate, the loan duration, the monthluy payment, the total amount repaid and the compound interest in their own list.
+		ii. Using the zip function maybe we can zip all these together in one big list
+		iii. Now from this big list we can map the user's name as the key to this giant list contaning all the relevant information that they entered so that it can be outputted in the table.

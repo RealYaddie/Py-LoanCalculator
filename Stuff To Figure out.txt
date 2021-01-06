@@ -3,3 +3,10 @@
 		i. Store all the information in a list so thats the loan amount, the interest rate, the loan duration, the monthluy payment, the total amount repaid and the compound interest in their own list.
 		ii. Using the zip function maybe we can zip all these together in one big list
 		iii. Now from this big list we can map the user's name as the key to this giant list contaning all the relevant information that they entered so that it can be outputted in the table.
+- Need to do some error handling to ensure that the user is only able to enter the correct input only
+	-> For error handling run a while loop along with the try and except statment to go back to the start if we detect the wrong inputs
+- Still need to find a better way to store the info and that would make the code look a bit cleaner I think
+- 
+- Using pretty table you can prolly create the table by column and use a for loop to run through each of our lists to make up the columns
+or
+- Using the same pretty table we try and achieve this same output using the zip function for efficiency

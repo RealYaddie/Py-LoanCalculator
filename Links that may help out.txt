@@ -1,2 +1,3 @@
 https://www.calculatorsoup.com/calculators/financial/loan-calculator-simple.php - Has Formula and examples
 https://businessideaslab.com/compound-interest-formula-basics/ - compound interest formula and an example
+https://www.educba.com/python-print-table/ - This site has a bunch of different ways on how you can display the tables

@@ -1,3 +1,7 @@
 😂️😂️😂️
 Version 0.1:
 - First iteration write up based on Psuedocode.txt. Only the core fuctionality nothing special yet, no functions either.
+version 0.15:
+- Added checks to ensure only valid responses are accepted
+- bug fixes
+

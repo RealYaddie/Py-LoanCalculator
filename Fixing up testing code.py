@@ -1,36 +1,40 @@
+"""
+Calculates total amount to be repaid on a loan, the compound interest and the monthly payment.
+Through the use of the amortize_schedule function a table showing all the payments over the years can be generated.
+Functions:
+	amortize_schedule(value, rate, pmt_yrs)
+"""
 from beautifultable import BeautifulTable
-loan_amount = 1000.0
-interest_rate = 10 / 100
-loan_duration = 10.0
-# ~ def monthly_interest(amount, intRate):
-	# ~ return 
 def amortize_schedule(value, rate, pmt_yrs):
-	'''
-	
-	'''
-	n = 0
-	# ~ intrate = rate/12.0
-	# ~ intrate = (rate / 100) / 12
+	"""
+	This function is used to calculate an amortization schedule and displays 
+	a table showing all the payments, the changing loan amount with each payment, 
+	the principal, the remaining balance after each payment and the 
+	actual amount being paid each time.
+	The function accepts three parameters:
+	value: This is the loan amount borrowed.
+	rate: This is the value of the interest rate that has already been converted to 
+	the monthly interest rate.
+	pmt_yrs: This represents the number of years given to repay the loan.
+	"""
+	num_of_months = 0
 	intrate = rate
 	totalpmts = pmt_yrs * 12
-	# ~ years = pmt_yrs * 12
-	# ~ payment = (intrate * value) / (1 - pow(1 + intrate, -totalpmts))
-	global payment
 	payment = (value * (intrate * (pow(1 + intrate, totalpmts)))) / (pow((1 + intrate), totalpmts) - 1)
 	table = BeautifulTable()
-	table.columns.header = ['PAYMENT NO.', 'LOAN VALUE','INTEREST', 'PRINCIPAL', 'REMAINING BALANCE', 'PAYMENT']
+	table.columns.header = ['PAYMENT NO.', 'LOAN VALUE', 'INTEREST', 'PRINCIPAL', 'REMAINING BALANCE', 'PAYMENT']
 	
 	while value > 0:
-		n += 1
+		num_of_months += 1
+		
 		interest = (value * intrate)
-		# ~ print(interest)
 		principal = payment - interest
 		
 		if value - payment < 0:
 			principal = value
-		table.rows.append([n, value, interest, principal, value-principal, payment])
+		table.rows.append([num_of_months, value, interest, principal, value-principal, payment])
 		
-		value = value - principal
+		value -= principal
 		
 	print(table)
 	
@@ -43,6 +47,7 @@ total_loan_repaid = []
 compound_interests = []
 counter = 0
 while True:
+	# ~ counter += 1
 	try:
 		print('''Choose from one of the list of valid input options below:
 	\t1. If you\'re finished press 1 to exit the program.
@@ -50,15 +55,13 @@ while True:
 	\t3. If you\'d like to view all the information entered in raw format.
 	\t4. If you\'d like to view the information entered in the form of a table.
 	\t5. Choose this option to display the entered info. in table form and end the program.
-			   '''
-			 )
+			   ''')
 		option = int(input('What would you like to do?  '))
-	except:
+	except ValueError:
 		print('ERROR: Please enter a valid response number. \n')
 		continue
-	if option == 1:
-		break
-	elif option == 3:
+	
+	if option == 3:
 		#This option right here I'm just printing out the plain list
 		print(f'''
 			 Names -> {names}
@@ -89,10 +92,10 @@ while True:
 				interest_rates.append(round(interest_rate, 2))
 				#Getting the loan duration
 				loan_duration = float(input("Enter the number of years that you have to repay the loan: "))
-				totalpmts = loan_duration * 12
+				periods = loan_duration * 12
 				loan_durations.append(loan_duration)
 				# ~ totalpmts = loan_duration * 12
-			except:
+			except ValueError:
 				print('ERROR: Please enter a valid response.')
 			
 			# ~ loan_amount = 1000.0
@@ -101,7 +104,7 @@ while True:
 		#Calculation Section
 	
 			#Calculating the monthly payment using the formula
-			monthly_payment = (loan_amount * (interest_rate * (pow((1 + interest_rate), totalpmts)))) / ((pow((1 + interest_rate), totalpmts) - 1))
+			monthly_payment = (loan_amount * (interest_rate * (pow((1 + interest_rate), periods)))) / ((pow((1 + interest_rate), periods) - 1))
 			# ~ monthly_payment = loan_amount *(interest_rate * (1 + interest_rate) ** loan_duration*12) / ((1 + interest_rate) ** loan_duration*12) - 1
 			monthly_payments.append(round(monthly_payment, 2))
 			# ~ monthly_payment = loan_amount *(interest_rate * (1 + interest_rate) ** loan_duration) / ((1 + interest_rate) ** loan_duration)
@@ -120,18 +123,22 @@ while True:
 
 			# ~ #Outputting the results
 			print(
-f"""\nFor the loan amount of ${loan_amount:,.2f}.
-\nThe total amount to be paid back is ${loan_repaid:,.2f},
-\nthe total amount to be paid back monthly is ${monthly_payment:,.2f} and
-\nthe compound interest on the loan is ${compound_interest - loan_amount:,.2f}
+f"""\nFor the loan amount of ${loan_amounts[counter]:,.2f}.
+\nThe total amount to be paid back is ${total_loan_repaid[counter]:,.2f},
+\nthe total amount to be paid back monthly is ${monthly_payments[counter]:,.2f} and
+\nthe compound interest on the loan is ${compound_interests[counter] - loan_amounts[counter]:,.2f}
 			""")
+			counter += 1
 			break
 		else:
 			print('ERROR: Please enter a valid response number.\n')
+	elif option == 1:
+		break
 	elif option == 4:
 		amortize_schedule(loan_amount, interest_rate, loan_duration)
 		continue
-	elif option == 5:
+	elif option == 5:	
 		amortize_schedule(loan_amount, interest_rate, loan_duration)
 		break
+		
 	

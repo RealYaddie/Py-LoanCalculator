@@ -1,0 +1,3 @@
+- The code is missing a few of the requirements in the PDF: The payment number, The Principal, The interest, The remaining balance
+- The calculation for the monthly payment right now is actually calculating the payment as if u were paying only once every year which is incorrect (NEED TO FIX)
+- Principal is the loan amount

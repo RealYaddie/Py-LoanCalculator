@@ -8,7 +8,7 @@ monthly_payments = []
 total_loan_repaid = []
 compound_interests = []
 isTrue = True
-columns = ['Names', 'Loan Amount', 'Interest Rate', 'Loan Duration', 'Monthly Payment', 'Total Loan Repaid', 'Compound Interest']
+columns = ['NAME', 'LOAN AMOUNT', 'INTEREST RATE', 'LOAN DURATION', 'MONTHLY PAYMENT', 'TOTAL LOAN REPAID', 'COMPOUND INTEREST']
 tab = PrettyTable()
 while isTrue:
 	try:
@@ -44,12 +44,12 @@ while isTrue:
 		#The first argument before the comma is the name of the column and the second argument after the comma is what is place below that specific column
 		#So for the first one 'columns[0] from the columns list represents the string 'Name' so thats the column name and then the list comprehension that I have as the second argument is all the names in the names list
 		tab.add_column(columns[0], [name for name in names])
-		tab.add_column(columns[1], [loan for loan in loan_amounts])
-		tab.add_column(columns[2], [(100 * intRate) for intRate in interest_rates])
+		tab.add_column(columns[1], [('$' + str(loan)) for loan in loan_amounts])
+		tab.add_column(columns[2], [(str((100 * intRate)) + '%') for intRate in interest_rates])
 		tab.add_column(columns[3], [year for year in loan_durations])
-		tab.add_column(columns[4], [monthly for monthly in monthly_payments])
-		tab.add_column(columns[5], [total for total in total_loan_repaid])
-		tab.add_column(columns[6], [compound for compound in compound_interests])
+		tab.add_column(columns[4], [('$' + str(monthly)) for monthly in monthly_payments])
+		tab.add_column(columns[5], [('$' + str(total)) for total in total_loan_repaid])
+		tab.add_column(columns[6], [('$' + str(compound)) for compound in compound_interests])
 		#Printing the table
 		print(tab)
 		#Deleting all the information from the table, because if I don't do this it starts looking ugly really fast
@@ -58,18 +58,19 @@ while isTrue:
 	elif continue_test == 5:
 		#This option doesn't have to be here but this was just to have an option to print the table and then end the program
 		tab.add_column(columns[0], [name for name in names])
-		tab.add_column(columns[1], [loan for loan in loan_amounts])
-		tab.add_column(columns[2], [(100 * intRate) for intRate in interest_rates])
+		tab.add_column(columns[1], [('$' + str(loan)) for loan in loan_amounts])
+		tab.add_column(columns[2], [(str((100 * intRate)) + '%') for intRate in interest_rates])
 		tab.add_column(columns[3], [year for year in loan_durations])
-		tab.add_column(columns[4], [monthly for monthly in monthly_payments])
-		tab.add_column(columns[5], [total for total in total_loan_repaid])
-		tab.add_column(columns[6], [compound for compound in compound_interests])
+		tab.add_column(columns[4], [('$' + str(monthly)) for monthly in monthly_payments])
+		tab.add_column(columns[5], [('$' + str(total)) for total in total_loan_repaid])
+		tab.add_column(columns[6], [('$' + str(compound)) for compound in compound_interests])
 		print(tab)
 		break
 	elif continue_test == 2:
 		loan_amount = 1000.0
 		interest_rate = 10.0 / 100
 		loan_duration = 10.0
+		totalpmts = loan_duration * 12
 		while isTrue:
 			#Getting the name of the user
 			name = input('Enter your first name only. ')
@@ -79,26 +80,33 @@ while isTrue:
 			loan_amounts.append(loan_amount)
 			#Getting the interest rate
 			# ~ interest_rate = float(input("Enter the interest rate on the loan amount: ")) / 100
-			# ~ interest_rate = interest_rate / 100
-			interest_rates.append(interest_rate)
+			interest_rate = interest_rate / 12
+			interest_rates.append(round(interest_rate, 2))
 			#Getting the loan duration
 			# ~ loan_duration = float(input("Enter the number of years that you have to repay the loan: "))
 			loan_durations.append(loan_duration)
-		# ~ loan_amount = 1000.0
-		# ~ interest_rate = 10.0 / 100
-		# ~ loan_duration = 10.0
+			# ~ totalpmts = loan_duration * 12
+			
+			# ~ loan_amount = 1000.0
+			# ~ interest_rate = 10.0 / 100
+			# ~ loan_duration = 10.0
 		#Calculation Section
 	
 			#Calculating the monthly payment using the formula
-			monthly_payment = (loan_amount * interest_rate * (1 + interest_rate) ** loan_duration) / ((1 + interest_rate) ** loan_duration - 1)
+			monthly_payment = (loan_amount * (interest_rate * (pow((1 + interest_rate), totalpmts)))) / ((pow((1 + interest_rate), totalpmts) - 1))
+			# ~ monthly_payment = loan_amount *(interest_rate * (1 + interest_rate) ** loan_duration*12) / ((1 + interest_rate) ** loan_duration*12) - 1
 			monthly_payments.append(round(monthly_payment, 2))
+			# ~ monthly_payment = loan_amount *(interest_rate * (1 + interest_rate) ** loan_duration) / ((1 + interest_rate) ** loan_duration)
+			# ~ unpaid_balance = loan_amount * ((1 + interest_rate) ** loan_duration) - (monthly_payment / interest_rate) * (((1 + interest_rate) ** loan_duration) - 1)
+			# ~ monthly_payment = loan_amount *(interest_rate * (1 + interest_rate) ** loan_duration*12) / ((1 + interest_rate) ** loan_duration*12) - 1
+			# ~ monthly_payments.append(round(monthly_payment, 2))
 		
 			# ~ #Calculating the total amount to be repaid
-			loan_repaid = monthly_payment * loan_duration
+			loan_repaid = monthly_payment * loan_duration * 12
 			total_loan_repaid.append(round(loan_repaid, 2))
 		
 			# ~ #Calculating the compound interest
-			compound_interest = loan_amount * (1 + (interest_rate / 1)) ** (1 + loan_duration)
+			compound_interest = loan_amount * (1 + ((interest_rate * 12)/ 1)) ** (1 * loan_duration)
 			compound_interests.append(round(compound_interest, 2))
 			
 
@@ -106,7 +114,7 @@ while isTrue:
 			print(
 f"""For user {name} the total amount to be paid back is ${loan_repaid:,.2f},
 the total amount to be paid back monthly is ${monthly_payment:,.2f} and
-the compound interest on the loan is ${compound_interest:,.2f} 
+the compound interest on the loan is ${compound_interest - loan_amount:,.2f}
 			""")
 			break
 		else:

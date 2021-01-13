@@ -1,0 +1,2 @@
+- Allow the program to be able to work with different compounding frequencies because as of right now the program only works on a monthly compound frequency
+- Allow the program to calculate compound interest based on different compounding frequencies as of right now it only works with annually compounded**

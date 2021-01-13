@@ -16,7 +16,7 @@ monthly_payment = (loan_amount * interest_rate * (1 + interest_rate) ** loan_dur
 loan_repaid = monthly_payment * loan_duration
 
 # ~ #Calculating the compound interest
-compound_interest = loan_amount * (1 + (interest_rate / 1)) ** (1 + loan_duration)
+compound_interest = loan_amount * (1 + (interest_rate / 1)) ** (1 * loan_duration)
 
 # ~ #Outputting the results
 print(

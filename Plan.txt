@@ -1,0 +1,9 @@
+https://www.calculator.net/loan-calculator.html?cloanamount=1000&cloanterm=10&cloantermmonth=0&cinterestrate=10&ccompound=annually&cpayback=month&x=75&y=23#amortized-result
+-> Use the math module
+-> Gonna have to re write the code to somehow be able to print out every single payment depending on the number of years or months the loan will be for because thats legit what the program asked for.
+i. Firstly Should prolly try to put the calculation parts in a function or something
+ii. Revist the formula for monthly payments
+**For the interest Rate you divide it by 12 to get the interest rate for each month**
+1. Payment Number: 
+2. Remaining Balance : The remaining balance would be the number after 
+3. 

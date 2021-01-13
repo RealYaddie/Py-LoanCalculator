@@ -1,2 +1,2 @@
-Link to Repo:
+Link to Repo(although its pretty messy):
 https://github.com/RealYaddie/Py-LoanCalculator

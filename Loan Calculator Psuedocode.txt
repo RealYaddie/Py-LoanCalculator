@@ -79,5 +79,25 @@ while True:
 				continue
 
 			# Calculation Section
-			monthly_payment = (loan_amount * (interest_rate * (1 + interest_rate)**number_of_payments)) / () - 1))
-	
+			monthly_payment = (loan_amount * (interest_rate * (1 + interest_rate)**number_of_payments)) \
+							/ (1 + interest_rate)**number_of_payments) - 1))
+
+			total_loan_repaid = monthly_payment*loan_duration*12
+				
+			compound_interest = loan_amount * (1 + ((interest_rate * 12)/ 1)) ** (1 * loan_duration)
+
+			# Displaying the information
+			print(f"For the loan amount ${loan_amount}.")
+			print(f"The total amount to be repaid is ${total_loan_repaid}.")
+			print(f"The total amount to be paid back monthly is ${monthly_payment}.")
+			print(f"The compound interest is ${compound_interest}")
+			break
+
+	elif choice == 3:
+		amortize_table(loan_amount, interest_rate, loan_duration)
+		continue
+
+	elif choice == 4:
+		amortize_table(loan_amount, interest_rate, loan_duration)
+		break
+

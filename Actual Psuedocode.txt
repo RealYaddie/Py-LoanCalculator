@@ -5,15 +5,79 @@ loan_duration = 0.0
 monthly_payment = 0.0
 total_loan_repaid = 0.0
 compound_interest = 0.0
+number_of_payments = 0.0
 
-# Gathering loan information from the user
-loan_amount = float(input('Enter the amount being loaned'))
 
-interest_rate = float(input('Enter the interest rate amount'))/100
-interest_rate = interest_rate/12
+def amortize_table(amount, rate, payment_years):
+	# Declaring and Initializing function variables
+	num_of_months = 0
+	total_payments = 0.0
+	interest = 0.0	
+	principal = 0.0
+		
+	total_payments = payment_years*12
+	
+	payment = (amount*(rate*((1 + rate)**total_payments))) / ((1 + rate)**total_payments)-1)
 
-loan_duration = int(input('Enter the number of years to repay the loan'))
+	table_headers = ['PAYMENT NO.', 'LOAN VALUE', 'INTEREST', 'PRINCIPAL', 'PAYMENT', 'REMAINING BALANCE']
+	
+	while amount > 0:
+		num_of_months = num_of_months + 1
 
-Function amortize schedule
-	Pass In: loan amount, the interest rate, the duration of the loan in years
+		interest = amount*rate
+		principal = payment - interest
+
+		if (amount - payment) < 0:
+			principal = amount
+			table_rows = [num_of_months, amount, interest, principal, payment, (amount-principal)]
+		amount = amount - principal
+
+	print(table)
+
+
+def menu_check():
+	# Declaring and initalizing function variables
+	user_input = 0
+	
+	while True:
+		try:
+			user_input = int(input('Pick a number from list'))
+		except ValueError:
+			print('Choose a valid response')
+			continue
+		if user_input <= 0 or user_input > 4:
+			print('Valid responses only')
+			continue
+		else:
+			return user_input
+while True:
+	#Menu System
+	print("Choose a valid response from the list given below: ")
+	print('1. Exits the program')
+	print('2. Enter loan information')
+	print('3. View amortization table based on the entered loan information')
+	print('4. View amortization table based on the entered loan information and automatically exists the program')
+
+	choice = menu_check()
+	
+	if choice == 1:
+		break
+	
+	elif choice == 2:
+		while True:
+			try:
+				# Gathering loan information from the user
+				loan_amount = float(input('Enter the amount being loaned'))
+
+				interest_rate = float(input('Enter the interest rate amount'))/100
+				interest_rate = interest_rate/12
+
+				loan_duration = int(input('Enter the number of years to repay the loan'))
+				number_of_payments = loan_duration*12
+			except ValueError:
+				print('ERROR: Please choose a valid response')
+				continue
+
+			# Calculation Section
+			monthly_payment = (loan_amount * (interest_rate * (1 + interest_rate)**number_of_payments)) / () - 1))
 	

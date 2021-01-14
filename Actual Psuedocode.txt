@@ -1,0 +1,19 @@
+# Declaring and initalizing variables
+loan_amount = 0.0
+interest_rate = 0.0
+loan_duration = 0.0
+monthly_payment = 0.0
+total_loan_repaid = 0.0
+compound_interest = 0.0
+
+# Gathering loan information from the user
+loan_amount = float(input('Enter the amount being loaned'))
+
+interest_rate = float(input('Enter the interest rate amount'))/100
+interest_rate = interest_rate/12
+
+loan_duration = int(input('Enter the number of years to repay the loan'))
+
+Function amortize schedule
+	Pass In: loan amount, the interest rate, the duration of the loan in years
+	

@@ -1,0 +1,5 @@
+https://medium.com/python-in-plain-english/python-programming-fundamentals-loan-payment-schedule-3e49cc1c0c86 - Used this site to see how to use the beautifultable module and to write the function for amortization
+
+https://realpython.com/python-pep8/#code-layout - Used this site to try and make sure that code was following the PEP8 standards as closely as possible
+
+https://www.omnicalculator.com/finance/amortization - Used this link to get the amortization formula and the compound interest formula, to find the monthly payments and the compound interest
